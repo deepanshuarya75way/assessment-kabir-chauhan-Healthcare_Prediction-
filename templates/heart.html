@@ -94,10 +94,18 @@
 
         {% if result %}
         <section class="result-section">
-            <h2>Prediction Result</h2>
+            <h2>Here is your prediction</h2>
             <div class="result-box {{ result_class }}">
                 {{ result }}
             </div>
+            <form method="POST" action="{{ url_for('feedback') }}">
+                <input type="hidden" name="prediction_id" value="{{ prediction_id }}">
+                <input type="hidden" name="disease" value="heart">
+                <input type="hidden" name="input_data" value='{{ input_data | tojson }}'>
+                <input type="hidden" name="prediction" value="{{ prediction }}">
+                <button type="submit" name="feedback" value="correct">Correct</button>
+                <button type="submit" name="feedback" value="incorrect">Incorrect</button>
+            </form>
         </section>
         {% endif %}
 

@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Submitted</title>
+  </head>
+  <body>
+    <h2>Your Feedback is here!</h2>
+    <p>Prediction ID: {{ prediction_id }} </p>
+    <p>Feedback: {{ feedback }}</p>
+    <a href="/{{ disease }}">Back to {{ disease|capitalize }} Prediction</a>
+  </body>
+</html>

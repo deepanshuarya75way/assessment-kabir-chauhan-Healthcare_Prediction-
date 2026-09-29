@@ -22,7 +22,7 @@
         <section class="form-section">
 
             <h2 class="title">Enter Patient Details</h2>
-            <form method="POST" class="prediction-form">
+            <form method="POST" action="{{ url_for('diabetes') }}" class="prediction-form">
                 
                 <div class="input-form">
                     <label>Pregnancies </label>
@@ -69,11 +69,22 @@
         </section>
 
         {% if result %}
-        <section class="result-section">
-            <h2>Prediction Result</h2>
-            <div class="result-box {{ result_class }}">
-                {{ result }}
-            </div>
+        <section class="feedback-section">
+            <h2>Here is the Prediction</h2>
+            <div class="{{ result_class }}"><h3>{{result}}</h3></div>
+
+            <form method="POST" action="{{ url_for('feedback') }}">
+
+                <input type="hidden" name="prediction_id" value="{{ prediction_id }}">
+                <input type="hidden" name="disease" value="Diabetes">
+                <input type="hidden" name="input_data" value="{{ input_data | tojson }}">
+                <input type="hidden" name="prediction" value="{{ result }}">
+                <button type="submit" name="feedback" value="correct" class="btn">Prediction was correct</button>
+                <button type="submit" name="feedback" value="incorrect" class="btn">Prediction was incorrect</button>
+                <br><br><br>
+                <button type="submit" class="btn">Submit Feedback!</button>
+            </form>
+
         </section>
         {% endif %}
 
