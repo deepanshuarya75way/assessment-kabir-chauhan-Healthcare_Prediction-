@@ -171,7 +171,7 @@ def feedback():
     if disease == "heart":
         back_url = "/heart"
         back_text = "Back to heart prediction"
-    elif diease == "diabetes":
+    elif disease == "diabetes":
         back_url = "/diabetes"
         back_text = "Back to Diabetes Prediction"
     else: 
